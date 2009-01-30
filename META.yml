@@ -1,0 +1,11 @@
+--- 
+abstract: A tool for managing dynamic website menus.
+author: 
+  - Andrew Rodland <andrew@hbslabs.com>
+generated_by: Dist::Zilla::Plugin::MetaYaml version 1.003
+license: perl
+name: WWW-MenuGrinder
+requires: 
+  Moose: 0.34
+  XML::Simple: 0
+version: 0.01_01
