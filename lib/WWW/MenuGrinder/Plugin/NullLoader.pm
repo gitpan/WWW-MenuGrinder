@@ -1,6 +1,5 @@
 package WWW::MenuGrinder::Plugin::NullLoader;
-our $VERSION = '0.01_01';
-
+our $VERSION = '0.04';
 
 # ABSTRACT: WWW::MenuGrinder Plugin that loads from the config.
 
@@ -18,18 +17,22 @@ sub load {
   }
 }
 
+__PACKAGE__->meta->make_immutable;
+
 no Moose;
 1;
 
 
 __END__
+=pod
+
 =head1 NAME
 
 WWW::MenuGrinder::Plugin::NullLoader - WWW::MenuGrinder Plugin that loads from the config.
 
 =head1 VERSION
 
-version 0.01_01
+version 0.04
 
 =head1 DESCRIPTION
 
@@ -51,8 +54,10 @@ The global configuration key C<menu> is expected to contain the menu structure.
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by HBS Labs, LLC..
+This software is copyright (c) 2010 by HBS Labs, LLC..
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
+
+=cut
 

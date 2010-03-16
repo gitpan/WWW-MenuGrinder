@@ -2,18 +2,38 @@
 use strict;
 use warnings;
 
-use ExtUtils::MakeMaker;
 
-WriteMakefile(
-  DISTNAME  => 'WWW-MenuGrinder',
-  NAME      => 'WWW::MenuGrinder',
-  AUTHOR    => 'Andrew\ Rodland\ \<andrew\@hbslabs\.com\>',
-  ABSTRACT  => 'A tool for managing dynamic website menus.',
-  VERSION   => '0.01_01',
-  EXE_FILES => [ qw() ],
-  (eval { ExtUtils::MakeMaker->VERSION(6.21) } ? (LICENSE => 'perl') : ()),
-  PREREQ_PM    => {
-    "XML::Simple" => '0',
-    "Moose" => '0.34',
-  },
-);
+
+use ExtUtils::MakeMaker 6.11;
+
+
+
+my %WriteMakefileArgs = (
+                       'test' => {
+                                   'TESTS' => 't/*.t'
+                                 },
+                       'NAME' => 'WWW::MenuGrinder',
+                       'DISTNAME' => 'WWW-MenuGrinder',
+                       'CONFIGURE_REQUIRES' => {
+                                                 'ExtUtils::MakeMaker' => '6.11'
+                                               },
+                       'AUTHOR' => 'Andrew Rodland <andrew@hbslabs.com>',
+                       'BUILD_REQUIRES' => {},
+                       'ABSTRACT' => 'A tool for managing dynamic website menus.',
+                       'EXE_FILES' => [],
+                       'VERSION' => '0.04',
+                       'PREREQ_PM' => {
+                                        'XML::Simple' => '0',
+                                        'Moose' => '0.34'
+                                      },
+                       'LICENSE' => 'perl'
+                     );
+
+
+delete $WriteMakefileArgs{LICENSE}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.31) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
+

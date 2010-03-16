@@ -1,6 +1,5 @@
 package WWW::MenuGrinder::Plugin::ActivePath;
-our $VERSION = '0.01_01';
-
+our $VERSION = '0.04';
 
 # ABSTRACT: WWW::MenuGrinder plugin that finds a path to the currently active page.
 
@@ -12,7 +11,10 @@ with 'WWW::MenuGrinder::Role::BeforeMogrify';
 
 has path => ( is => 'rw' );
 
-sub plugin_depends { qw(Visitor) }
+has active_child_ref => (
+  is => 'rw',
+  default => 0,
+);
 
 sub plugin_required_grinder_methods { qw(path) }
 
@@ -42,9 +44,9 @@ sub find_longest_match {
 
       my $active;
       # XML::Simple is stupid
-      if ( $location eq '' or ref($location) eq 'HASH' ) { 
+      if ($location eq '' or (ref($location) && ref($location) eq 'HASH') ) { 
         $active = 0.01; # more than 0, less than 1
-      } elsif ( $self->{path} =~ m#^\Q$location\E(/|$)# ) {
+      } elsif ( $self->path =~ m#^\Q$location\E(/|$)# ) {
         $active = length($location);
       }
 
@@ -76,6 +78,7 @@ sub mark_active_path {
       for my $child ( @{ $item->{item} } ) {
         if (defined $child->{active}) {
           $item->{active} = "child";
+          $item->{active_child} = $child if $self->active_child_ref;
           last;
         }
       }
@@ -90,18 +93,22 @@ sub cleanup {
   $self->longest(0);
 }
 
+__PACKAGE__->meta->make_immutable;
+
 no Moose;
 1;
 
 
 __END__
+=pod
+
 =head1 NAME
 
 WWW::MenuGrinder::Plugin::ActivePath - WWW::MenuGrinder plugin that finds a path to the currently active page.
 
 =head1 VERSION
 
-version 0.01_01
+version 0.04
 
 =head1 DESCRIPTION
 
@@ -116,16 +123,20 @@ ancestors will have its C<active> key set to "child".
 
 =head2 Configuration
 
-None.
+=over 4
+
+=item * C<active_child_ref>
+
+Boolean (default: false). If set to a true value, items with C<active>="child"
+will also have a key C<active_child>, which is a reference to its child which
+is active.
+
+=back
 
 =head2 Required Methods
 
 In order to load this plugin your C<WWW::MenuGrinder> subclass must implement
 the method C<path> returning a path name for the current request.
-
-=head2 Dependencies
-
-C<WWW::MenuGrinder::Plugin::Visitor>.
 
 =head2 Other Considerations
 
@@ -138,8 +149,10 @@ the menu, to ensure that the chain of active items is unbroken.
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by HBS Labs, LLC..
+This software is copyright (c) 2010 by HBS Labs, LLC..
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
+
+=cut
 

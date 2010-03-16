@@ -1,12 +1,11 @@
 package WWW::MenuGrinder::Plugin::FileReloader;
-our $VERSION = '0.01_01';
-
+our $VERSION = '0.04';
 
 # ABSTRACT: WWW::MenuGrinder plugin to reload the menu when a file changes.
 
 use Moose;
 
-with 'WWW::MenuGrinder::Role::BeforePreMogrify';
+with 'WWW::MenuGrinder::Role::OnInit';
 with 'WWW::MenuGrinder::Role::BeforeMogrify';
 
 # New versions of Time::HiRes give us subsecond times on stat(). Use it if we
@@ -26,7 +25,7 @@ has timestamp => (
   is => 'rw'
 );
 
-sub before_pre_mogrify {
+sub on_init {
   my ($self) = @_;
   my $time = (stat $self->filename)[9];
   $self->timestamp( $time ) if defined $time;
@@ -37,8 +36,8 @@ sub before_mogrify {
 
   my $time = (stat $self->filename)[9];
 
-  # It seems odd that we're not setting $self->timestamp here but our
-  # before_pre_mogrify is about to get called anyway...
+  # It seems odd that we're not setting $self->timestamp here but our on_init
+  # is about to get called anyway...
   if (defined $time and $time > $self->timestamp) {
     $self->grinder->init_menu;
   }
@@ -56,18 +55,22 @@ sub BUILD {
   $self->filename($filename);
 }
 
+__PACKAGE__->meta->make_immutable;
+
 no Moose;
 1;
 
 
 __END__
+=pod
+
 =head1 NAME
 
 WWW::MenuGrinder::Plugin::FileReloader - WWW::MenuGrinder plugin to reload the menu when a file changes.
 
 =head1 VERSION
 
-version 0.01_01
+version 0.04
 
 =head1 DESCRIPTION
 
@@ -93,8 +96,10 @@ C<Loader> plugin, to avoid surprises.
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by HBS Labs, LLC..
+This software is copyright (c) 2010 by HBS Labs, LLC..
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
+
+=cut
 

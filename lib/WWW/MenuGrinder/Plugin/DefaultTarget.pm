@@ -1,16 +1,13 @@
 package WWW::MenuGrinder::Plugin::DefaultTarget;
-our $VERSION = '0.01_01';
-
+our $VERSION = '0.04';
 
 # ABSTRACT: WWW::MenuGrinder plugin that sets a default link target.
 
 use Moose;
 
-with 'WWW::MenuGrinder::Role::ItemPreMogrifier';
+with 'WWW::MenuGrinder::Role::ItemMogrifier';
 
-sub plugin_depends { qw(Visitor) }
-
-sub item_pre_mogrify {
+sub item_mogrify {
   my ($self, $item) = @_;
 
   if (exists $item->{location} && !exists $item->{target}) {
@@ -26,18 +23,22 @@ sub item_pre_mogrify {
   return $item;
 }
 
+__PACKAGE__->meta->make_immutable;
+
 no Moose;
 1;
 
 
 __END__
+=pod
+
 =head1 NAME
 
 WWW::MenuGrinder::Plugin::DefaultTarget - WWW::MenuGrinder plugin that sets a default link target.
 
 =head1 VERSION
 
-version 0.01_01
+version 0.04
 
 =head1 DESCRIPTION
 
@@ -57,18 +58,16 @@ None.
 
 None.
 
-=head2 Dependencies
-
-C<WWW::MenuGrinder::Plugin::Visitor>.
-
 =head1 AUTHOR
 
   Andrew Rodland <andrew@hbslabs.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by HBS Labs, LLC..
+This software is copyright (c) 2010 by HBS Labs, LLC..
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
+
+=cut
 

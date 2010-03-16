@@ -1,6 +1,5 @@
 package WWW::MenuGrinder::Plugin::Variables;
-our $VERSION = '0.01_01';
-
+our $VERSION = '0.04';
 
 # ABSTRACT: WWW::MenuGrinder plugin that does variable substitutions and checks.
 
@@ -8,8 +7,6 @@ use Moose;
 use List::Util;
 
 with 'WWW::MenuGrinder::Role::ItemMogrifier';
-
-sub plugin_depends { qw(Visitor) }
 
 sub plugin_required_grinder_methods { qw(get_variable) }
 
@@ -64,18 +61,22 @@ sub item_mogrify {
   return $item;
 }
 
+__PACKAGE__->meta->make_immutable;
+
 no Moose;
 1;
 
 
 __END__
+=pod
+
 =head1 NAME
 
 WWW::MenuGrinder::Plugin::Variables - WWW::MenuGrinder plugin that does variable substitutions and checks.
 
 =head1 VERSION
 
-version 0.01_01
+version 0.04
 
 =head1 DESCRIPTION
 
@@ -102,8 +103,6 @@ C<"Hello, world!"> if the variable C<object> holds the value C<"world">.
 An arrayref containing the names of menu keys to perform variable substitution
 on. Defaults to C<['label']>.
 
-=back
-
 =head2 Required Methods
 
 In order to load this plugin your C<WWW::MenuGrinder> subclass must implement
@@ -119,8 +118,10 @@ session, the application configuration, or some combination.
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by HBS Labs, LLC..
+This software is copyright (c) 2010 by HBS Labs, LLC..
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
+
+=cut
 

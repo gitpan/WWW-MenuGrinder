@@ -1,6 +1,5 @@
-package WWW::MenuGrinder::Role::BeforePreMogrify;
-our $VERSION = '0.01_01';
-
+package WWW::MenuGrinder::Role::OnInit;
+our $VERSION = '0.04';
 
 # ABSTRACT: WWW::MenuGrinder role for plugins that need initialization before pre-mogrify.
 
@@ -8,20 +7,22 @@ use Moose::Role;
 
 with 'WWW::MenuGrinder::Role::Plugin';
 
-requires 'before_pre_mogrify';
+requires 'on_init';
 
 no Moose::Role;
 
 1;
 
 __END__
+=pod
+
 =head1 NAME
 
-WWW::MenuGrinder::Role::BeforePreMogrify - WWW::MenuGrinder role for plugins that need initialization before pre-mogrify.
+WWW::MenuGrinder::Role::OnInit - WWW::MenuGrinder role for plugins that need initialization before pre-mogrify.
 
 =head1 VERSION
 
-version 0.01_01
+version 0.04
 
 =head1 AUTHOR
 
@@ -29,8 +30,10 @@ version 0.01_01
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by HBS Labs, LLC..
+This software is copyright (c) 2010 by HBS Labs, LLC..
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
+
+=cut
 

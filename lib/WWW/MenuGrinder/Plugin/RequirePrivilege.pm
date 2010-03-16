@@ -1,6 +1,5 @@
 package WWW::MenuGrinder::Plugin::RequirePrivilege;
-our $VERSION = '0.01_01';
-
+our $VERSION = '0.04';
 
 # ABSTRACT: WWW::MenuGrinder plugin that does privilege checks on items.
 
@@ -8,8 +7,6 @@ use Moose;
 use List::Util;
 
 with 'WWW::MenuGrinder::Role::ItemMogrifier';
-
-sub plugin_depends { qw(Visitor) }
 
 sub plugin_required_grinder_methods { qw(has_priv) }
 
@@ -31,18 +28,22 @@ sub item_mogrify {
   return $item;
 }
 
+__PACKAGE__->meta->make_immutable;
+
 no Moose;
 1;
 
 
 __END__
+=pod
+
 =head1 NAME
 
 WWW::MenuGrinder::Plugin::RequirePrivilege - WWW::MenuGrinder plugin that does privilege checks on items.
 
 =head1 VERSION
 
-version 0.01_01
+version 0.04
 
 =head1 DESCRIPTION
 
@@ -64,18 +65,16 @@ In order to load this plugin your C<WWW::MenuGrinder> subclass must implement
 the method C<has_priv>, which receives a privilege name as a string and returns
 true or false indicating whether the privilege check was successful.
 
-=head2 Dependencies
-
-C<WWW::MenuGrinder::Plugin::Visitor>.
-
 =head1 AUTHOR
 
   Andrew Rodland <andrew@hbslabs.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2009 by HBS Labs, LLC..
+This software is copyright (c) 2010 by HBS Labs, LLC..
 
 This is free software; you can redistribute it and/or modify it under
-the same terms as perl itself.
+the same terms as the Perl 5 programming language system itself.
+
+=cut
 
