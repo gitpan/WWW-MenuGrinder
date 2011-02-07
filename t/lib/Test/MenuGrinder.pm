@@ -1,5 +1,4 @@
 package Test::MenuGrinder;
-our $VERSION = '0.04';
 
 use Moose;
 

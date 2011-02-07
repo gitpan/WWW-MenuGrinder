@@ -1,5 +1,7 @@
 package WWW::MenuGrinder::Plugin::YAMLLoader;
-our $VERSION = '0.04';
+BEGIN {
+  $WWW::MenuGrinder::Plugin::YAMLLoader::VERSION = '0.06';
+}
 
 # ABSTRACT: WWW::MenuGrinder plugin that loads menus with YAML::XS.
 
@@ -40,7 +42,7 @@ WWW::MenuGrinder::Plugin::YAMLLoader - WWW::MenuGrinder plugin that loads menus 
 
 =head1 VERSION
 
-version 0.04
+version 0.06
 
 =head1 DESCRIPTION
 
@@ -59,11 +61,11 @@ read.
 
 =head1 AUTHOR
 
-  Andrew Rodland <andrew@hbslabs.com>
+Andrew Rodland <andrew@hbslabs.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by HBS Labs, LLC..
+This software is copyright (c) 2011 by HBS Labs, LLC..
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,5 +1,7 @@
 package WWW::MenuGrinder::Role::Loader;
-our $VERSION = '0.04';
+BEGIN {
+  $WWW::MenuGrinder::Role::Loader::VERSION = '0.06';
+}
 
 # ABSTRACT: WWW::MenuGrinder role for plugins that load menu data.
 
@@ -23,7 +25,7 @@ WWW::MenuGrinder::Role::Loader - WWW::MenuGrinder role for plugins that load men
 
 =head1 VERSION
 
-version 0.04
+version 0.06
 
 =head1 METHODS
 
@@ -35,11 +37,11 @@ C<< $self->grinder->config >> is available.
 
 =head1 AUTHOR
 
-  Andrew Rodland <andrew@hbslabs.com>
+Andrew Rodland <andrew@hbslabs.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by HBS Labs, LLC..
+This software is copyright (c) 2011 by HBS Labs, LLC..
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

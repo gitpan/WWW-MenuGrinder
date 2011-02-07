@@ -1,5 +1,7 @@
 package WWW::MenuGrinder::Plugin::NullOutput;
-our $VERSION = '0.04';
+BEGIN {
+  $WWW::MenuGrinder::Plugin::NullOutput::VERSION = '0.06';
+}
 
 # ABSTRACT: WWW::MenuGrinder plugin that outputs the menu structure unchanged.
 
@@ -28,7 +30,7 @@ WWW::MenuGrinder::Plugin::NullOutput - WWW::MenuGrinder plugin that outputs the 
 
 =head1 VERSION
 
-version 0.04
+version 0.06
 
 =head1 DESCRIPTION
 
@@ -43,11 +45,11 @@ Petal, as well as further processing in Perl.
 
 =head1 AUTHOR
 
-  Andrew Rodland <andrew@hbslabs.com>
+Andrew Rodland <andrew@hbslabs.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by HBS Labs, LLC..
+This software is copyright (c) 2011 by HBS Labs, LLC..
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

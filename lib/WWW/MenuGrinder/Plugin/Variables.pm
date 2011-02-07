@@ -1,5 +1,7 @@
 package WWW::MenuGrinder::Plugin::Variables;
-our $VERSION = '0.04';
+BEGIN {
+  $WWW::MenuGrinder::Plugin::Variables::VERSION = '0.06';
+}
 
 # ABSTRACT: WWW::MenuGrinder plugin that does variable substitutions and checks.
 
@@ -76,7 +78,7 @@ WWW::MenuGrinder::Plugin::Variables - WWW::MenuGrinder plugin that does variable
 
 =head1 VERSION
 
-version 0.04
+version 0.06
 
 =head1 DESCRIPTION
 
@@ -114,11 +116,11 @@ session, the application configuration, or some combination.
 
 =head1 AUTHOR
 
-  Andrew Rodland <andrew@hbslabs.com>
+Andrew Rodland <andrew@hbslabs.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by HBS Labs, LLC..
+This software is copyright (c) 2011 by HBS Labs, LLC..
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

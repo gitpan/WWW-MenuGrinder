@@ -4,8 +4,9 @@ author:
   - 'Andrew Rodland <andrew@hbslabs.com>'
 build_requires: {}
 configure_requires:
-  ExtUtils::MakeMaker: 6.11
-generated_by: 'Dist::Zilla version 1.100660'
+  ExtUtils::MakeMaker: 6.31
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.200003, CPAN::Meta::Converter version 2.102400'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -14,4 +15,4 @@ name: WWW-MenuGrinder
 requires:
   Moose: 0.34
   XML::Simple: 0
-version: 0.04
+version: 0.06

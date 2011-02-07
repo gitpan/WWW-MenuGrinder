@@ -1,5 +1,7 @@
 package WWW::MenuGrinder::Plugin::DefaultTarget;
-our $VERSION = '0.04';
+BEGIN {
+  $WWW::MenuGrinder::Plugin::DefaultTarget::VERSION = '0.06';
+}
 
 # ABSTRACT: WWW::MenuGrinder plugin that sets a default link target.
 
@@ -38,7 +40,7 @@ WWW::MenuGrinder::Plugin::DefaultTarget - WWW::MenuGrinder plugin that sets a de
 
 =head1 VERSION
 
-version 0.04
+version 0.06
 
 =head1 DESCRIPTION
 
@@ -60,11 +62,11 @@ None.
 
 =head1 AUTHOR
 
-  Andrew Rodland <andrew@hbslabs.com>
+Andrew Rodland <andrew@hbslabs.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by HBS Labs, LLC..
+This software is copyright (c) 2011 by HBS Labs, LLC..
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

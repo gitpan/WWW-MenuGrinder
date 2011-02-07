@@ -1,5 +1,7 @@
 package WWW::MenuGrinder::Plugin::FileReloader;
-our $VERSION = '0.04';
+BEGIN {
+  $WWW::MenuGrinder::Plugin::FileReloader::VERSION = '0.06';
+}
 
 # ABSTRACT: WWW::MenuGrinder plugin to reload the menu when a file changes.
 
@@ -70,7 +72,7 @@ WWW::MenuGrinder::Plugin::FileReloader - WWW::MenuGrinder plugin to reload the m
 
 =head1 VERSION
 
-version 0.04
+version 0.06
 
 =head1 DESCRIPTION
 
@@ -92,11 +94,11 @@ C<Loader> plugin, to avoid surprises.
 
 =head1 AUTHOR
 
-  Andrew Rodland <andrew@hbslabs.com>
+Andrew Rodland <andrew@hbslabs.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by HBS Labs, LLC..
+This software is copyright (c) 2011 by HBS Labs, LLC..
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
